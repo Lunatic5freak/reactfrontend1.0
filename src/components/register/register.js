@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import axios from "axios";
+import {Container} from 'react-bootstrap'
 import { useHistory } from "react-router";
 import Swal from "sweetalert2"
 
@@ -34,21 +35,21 @@ const Signup=()=>{
     }
 
     return(
-        <>
+        <Container>
         <form onSubmit={handleSubmit}>
         <div className="form-group">
-            <label htmlFor="name">Userid</label>
+            <label htmlFor="name">NAme</label>
             <input type="text" className="form-control" name="name"
                 value={user.name}
                 onChange={handleInputs}
-                placeholder="Enter your id" />
+                placeholder="Enter your name" />
         </div>
         <div className="form-group">
-            <label htmlFor="email">Userid</label>
+            <label htmlFor="email">email</label>
             <input type="text" className="form-control" name="email"
                 value={user.email}
                 onChange={handleInputs}
-                placeholder="Enter your id" />
+                placeholder="Enter your email" />
         </div>
         <div className="form-group">
             <label htmlFor="password">Password</label>
@@ -59,7 +60,7 @@ const Signup=()=>{
         </div>
         <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
     </form>
-        </>
+        </Container>
     )
 }
 

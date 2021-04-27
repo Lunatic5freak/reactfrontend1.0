@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form,Container } from "react-bootstrap";
 import axios from "axios";
 import { BrowserRouter, Route,Link } from "react-router-dom";
 import Switch from "react-bootstrap/esm/Switch";
@@ -32,6 +32,7 @@ export default function Login({ setToken }) {
   };
   return (
     <BrowserRouter>
+    <Container>
       <h1>Login</h1>
       <Form>
         <Form.Group>
@@ -62,7 +63,7 @@ export default function Login({ setToken }) {
       <Switch>
         <Route path="/signup" exact component={Signup}></Route>
       </Switch>
-
+      </Container>
     </BrowserRouter>
   );
 }
