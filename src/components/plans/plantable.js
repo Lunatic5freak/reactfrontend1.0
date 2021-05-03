@@ -2,13 +2,14 @@ import React from "react"
 import axios from 'axios'
 import { Button } from "react-bootstrap";
 import swal from 'sweetalert2'
+import Config from './../../config/config'
 
 const Plantable=(props)=>{
 
     const subscribe = async () => {
         let axiosinstance=new axios.create({withCredentials:true})
           let userid = localStorage.getItem("email");
-          const res1=await axiosinstance.get(`/api/users/${userid}`);
+          const res1=await axiosinstance.get(`${Config.api_url}/api/users/${userid}`);
           if(res1.data.subscribed_plans===props.name){
               swal.fire(
                   'error',
@@ -16,7 +17,7 @@ const Plantable=(props)=>{
               )
           }else{
             let plan = { subscribed_plans: props.name };
-            const res = await axiosinstance.put(`https://moleculerbackend.herokuapp.com/api/users/${userid}`, plan);
+            const res = await axiosinstance.put(`${Config.api_url}/api/users/${userid}`, plan);
             swal.fire(
                 "success",
                 res.data.msg

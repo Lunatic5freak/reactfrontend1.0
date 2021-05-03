@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import Config from './../../config/config'
 
 const Users=(props)=>{
     let axiosinstance=new axios.create({withCredentials:true})
     const [users,setUsers]=useState([])
     useEffect(()=>{
         const data=async ()=>{
-            const res=await axiosinstance.get('https://moleculerbackend.herokuapp.com/api/users');
+            const res=await axiosinstance.get(`${Config.api_url}/api/users`);
             console.log(res.data);
             setUsers(res.data);
         }

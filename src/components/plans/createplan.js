@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import {Form,Button} from 'react-bootstrap'
 import Swal from 'sweetalert2'
+import Config from './../../config/config'
 
 const Createplan=()=>{
     let axiosinstance=new axios.create({withCredentials:true})
@@ -17,7 +18,7 @@ const Createplan=()=>{
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        axiosinstance.post('https://moleculerbackend.herokuapp.com/api/plans',plan)
+        axiosinstance.post(`${Config.api_url}/api/plans`,plan)
         .then(res=>{
             Swal.fire(
                 'succes',

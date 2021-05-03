@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Plantable from "./plantable";
+import Config from './../../config/config'
 
 const Plans = (props) => {
   const axiosinstance = new axios.create({withCredentials:true});
@@ -9,12 +10,12 @@ const Plans = (props) => {
   const [role,setRole]=useState();
   useEffect(() => {
       const id=localStorage.getItem('email')
-    axiosinstance.get(`https://moleculerbackend.herokuapp.com/api/users/${id}`)
+    axiosinstance.get(`${Config.api_url}/api/users/${id}`)
     .then(res=>{
         setRole(res.data.role)
     })
     const data =  () => {
-      axiosinstance.get("/api/plans")
+      axiosinstance.get(`${Config.api_url}/api/plans`)
       .then(res=>{
         setPlans(res.data);
       })

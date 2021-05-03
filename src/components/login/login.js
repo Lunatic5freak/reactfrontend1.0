@@ -5,6 +5,7 @@ import axios from "axios";
 import { BrowserRouter, Route,Link } from "react-router-dom";
 import Switch from "react-bootstrap/esm/Switch";
 import Signup from '../register/register'
+import Config from "./../../config/config"
 export default function Login({ setToken }) {
   const [user, setUser] = useState({
     userid: "",
@@ -18,8 +19,9 @@ export default function Login({ setToken }) {
   };
 
   const handleSubmit = (e) => {
-    let axiosinstance = new axios.create({});
-    axiosinstance.post("https://moleculerbackend.herokuapp.com/user/login", user).then((res) => {
+    let axiosinstance = new axios.create({withCredentials:true});
+    axiosinstance.post(`${Config.api_url}/user/login`,user)
+    .then((res) => {
         console.log(res.data)
       if (res.data.role === "admin" || res.data.role === "user") {
         localStorage.setItem('email',res.data.email)

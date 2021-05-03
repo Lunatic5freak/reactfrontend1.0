@@ -3,6 +3,7 @@ import axios from "axios";
 import {Container} from 'react-bootstrap'
 import { useHistory } from "react-router";
 import Swal from "sweetalert2"
+import Config from "./../../config/config"
 
 const Signup=()=>{
     const history=useHistory();
@@ -19,7 +20,7 @@ const Signup=()=>{
     const handleSubmit=(e)=>{
         e.preventDefault();
         let axiosinstance=new axios.create({});
-        axiosinstance.post('https://moleculerbackend.herokuapp.com/api/users',
+        axiosinstance.post(`${Config.api_url}/api/users`,
         user)
         .then(data=>{
             console.log(data);

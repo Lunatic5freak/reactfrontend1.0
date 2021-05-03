@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import axios from "axios";
+import Config from "./../../config/config"
 
 const User=(props)=>{
     let axiosinstance=new axios.create({withCredentials:true})
@@ -9,7 +10,7 @@ const User=(props)=>{
         const data=async ()=>{
             const email=localStorage.getItem('email')
             console.log(email)
-            const res=await axiosinstance.get(`https://moleculerbackend.herokuapp.com/api/users/${email}`);
+            const res=await axiosinstance.get(`${Config.api_url}/api/users/${email}`);
             console.log(res.data);
             setUser(res.data);
         }
