@@ -19,7 +19,7 @@ export default function Login({ setToken }) {
   };
 
   const handleSubmit = (e) => {
-    let axiosinstance = new axios.create({withCredentials:true});
+    let axiosinstance = new axios.create({});
     axiosinstance.post(`${Config.api_url}/user/login`,user)
     .then((res) => {
         console.log(res.data)
